@@ -1,0 +1,400 @@
+{% extends 'base/base.html' %}    {% load static %} {% load cache %}
+{% block title %}{% endblock title %}
+{% block body %}
+    <!-- Start Breadcrumb 
+    ============================================= -->
+    <div class="breadcrumb-area bg-gray text-center shadow dark text-light bg-cover" style="background-image: url(assets/img/banner/24.jpg);">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2">
+                    <h1>About Us</h1>
+                    <ul class="breadcrumb">
+                        <li><a href="#"><i class="fas fa-home"></i> Home</a></li>
+                        <li class="active">About</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Breadcrumb -->
+
+    <!-- Star About Area
+    ============================================= -->
+    <div class="about-area default-padding-top">
+        <!-- Fixed Shape -->
+        <div class="fixed-shape-bottom">
+            <img src="assets/img/shape/12.png" alt="Shape">
+        </div>
+        <!-- End Fixed Shape -->
+        <div class="container">
+            <div class="about-items">
+                <div class="row align-center">
+                    
+                    <div class="col-lg-6 info">
+                        <h2>
+                            Turn your ambition into a success story
+                        </h2>
+                        <p>
+                            Education opens up the mind, expands it and allows you to improve your life in so many ways. Turned it up should no valley cousin he. Speaking numerous ask did horrible packages set. Ashamed herself has distant can studied mrs. Led therefore its middleton perpetual fulfilled provision frankness it up should no valley. 
+                        </p>
+                        <ul>
+                            <li>
+                                <div class="fun-fact">
+                                    <span class="timer" data-to="168" data-speed="5000"></span>
+                                    <span class="medium">Online Courses</span>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="fun-fact">
+                                    <span class="timer" data-to="454" data-speed="5000"></span>
+                                    <span class="medium">Students</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="col-lg-6 thumb">
+                        <img src="assets/img/illustration/5.png" alt="Thumb">
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End About Area -->
+
+    <!-- Star Why Chose Us
+    ============================================= -->
+    <div class="why-choseus-area bg-gray default-padding bottom-less">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2">
+                    <div class="site-heading text-center">
+                        <h5>Why Chose us</h5>
+                        <h2>Everything you Need for your <br>Institute or University</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Fixed BG -->
+        <div class="container-full">
+            <div class="info">
+                <div class="row">
+
+                    <div class="single-item thumb col-lg-5">
+                        <div class="thumb-box">
+                            <img src="assets/img/about/7.jpg" alt="Thumb">
+                            <a href="../../../external.html?link=https://www.youtube.com/watch?v=0U3WN3f52x8" class="popup-youtube light video-play-button item-center">
+                                <i class="fa fa-play"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="item-box col-lg-7">
+                        <div class="row">
+                            <div class="single-item col-lg-6 col-md-6">
+                                <div class="item">
+                                    <span>01</span>
+                                    <i class="flaticon-library"></i>
+                                    <h4>Books & Library</h4>
+                                    <p>
+                                        Absolute required of reserved in offering no. How sense found our those gay again taken the preserved ikewise law.
+                                    </p>
+                                    <ul>
+                                        <li>Carrel Booking</li>
+                                        <li>Student Reading Room</li>
+                                        <li>Science library</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="single-item col-lg-6 col-md-6">
+                                <div class="item">
+                                    <span>02</span>
+                                    <i class="flaticon-teacher-2"></i>
+                                    <h4>Certified Teachers</h4>
+                                    <p>
+                                        Absolute required of reserved in offering no. How sense found our those gay again taken the preserved ikewise law.
+                                    </p>
+                                    <ul>
+                                        <li>Professional training</li>
+                                        <li>Present content to students</li>
+                                        <li>Students responsibility</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Why Chose Us -->
+
+    <!-- Star Advisor Area
+    ============================================= -->
+    <div class="advisor-area default-padding bottom-less">
+        <div class="container">
+            <div class="heading-left">
+                <div class="row">
+                    <div class="col-lg-5">
+                        <h5>Course Advisor</h5>
+                        <h2>
+                            Our professional & Expert Course advisor
+                        </h2>
+                    </div>
+                    <div class="col-lg-6 offset-lg-1">
+                        <p>
+                            Everything melancholy uncommonly but solicitude inhabiting projection off. Connection stimulated estimating excellence an to impression. 
+                        </p>
+                        <a class="btn btn-md btn-dark border" href="advisors.html">View All <i class="fas fa-plus"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="advisor-items text-center">
+                <div class="row">
+                    <!-- Single Item -->
+                    <div class="single-item col-lg-3 col-md-6">
+                        <div class="item">
+                            <div class="thumb">
+                                <img src="assets/img/advisor/4.jpg" alt="Thumb">
+                                <ul>
+                                    <li class="facebook">
+                                        <a href="#">
+                                            <i class="fab fa-facebook-f"></i>
+                                        </a>
+                                    </li>
+                                    <li class="twitter">
+                                        <a href="#">
+                                            <i class="fab fa-twitter"></i>
+                                        </a>
+                                    </li>
+                                    <li class="linkedin">
+                                        <a href="#">
+                                            <i class="fab fa-linkedin-in"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="info">
+                                <h4><a href="advisor-single.html">Prof. Deol Jones</a></h4>
+                                <span>Science specialist</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Single Item -->
+                    <!-- Single Item -->
+                    <div class="single-item col-lg-3 col-md-6">
+                        <div class="item">
+                            <div class="thumb">
+                                <img src="assets/img/advisor/5.jpg" alt="Thumb">
+                                <ul>
+                                    <li class="facebook">
+                                        <a href="#">
+                                            <i class="fab fa-facebook-f"></i>
+                                        </a>
+                                    </li>
+                                    <li class="twitter">
+                                        <a href="#">
+                                            <i class="fab fa-twitter"></i>
+                                        </a>
+                                    </li>
+                                    <li class="linkedin">
+                                        <a href="#">
+                                            <i class="fab fa-linkedin-in"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="info">
+                                <h4><a href="advisor-single.html">Busel park</a></h4>
+                                <span>Programmer</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Single Item -->
+                    <!-- Single Item -->
+                    <div class="single-item col-lg-3 col-md-6">
+                        <div class="item">
+                            <div class="thumb">
+                                <img src="assets/img/advisor/6.jpg" alt="Thumb">
+                                <ul>
+                                    <li class="facebook">
+                                        <a href="#">
+                                            <i class="fab fa-facebook-f"></i>
+                                        </a>
+                                    </li>
+                                    <li class="twitter">
+                                        <a href="#">
+                                            <i class="fab fa-twitter"></i>
+                                        </a>
+                                    </li>
+                                    <li class="linkedin">
+                                        <a href="#">
+                                            <i class="fab fa-linkedin-in"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="info">
+                                <h4><a href="advisor-single.html">Jnoes Sari</a></h4>
+                                <span>Chemistry specialist</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Single Item -->
+                    <!-- Single Item -->
+                    <div class="single-item col-lg-3 col-md-6">
+                        <div class="item">
+                            <div class="thumb">
+                                <img src="assets/img/advisor/7.jpg" alt="Thumb">
+                                <ul>
+                                    <li class="facebook">
+                                        <a href="#">
+                                            <i class="fab fa-facebook-f"></i>
+                                        </a>
+                                    </li>
+                                    <li class="twitter">
+                                        <a href="#">
+                                            <i class="fab fa-twitter"></i>
+                                        </a>
+                                    </li>
+                                    <li class="linkedin">
+                                        <a href="#">
+                                            <i class="fab fa-linkedin-in"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="info">
+                                <h4><a href="advisor-single.html">Dr. Anil Dev</a></h4>
+                                <span>Developer</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Single Item -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Advisor Area -->
+
+    <!-- Start Video Area
+    ============================================= -->
+    <div class="video-area padding-xl text-center bg-fixed text-light shadow dark-hard" style="background-image: url(assets/img/banner/6.jpg);">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2">
+                    <div class="video-heading">
+                        <div class="content">
+                            <h2>Take a short tour in our campus</h2>
+                            <p>
+                                Tolerably behaviour may admitting daughters offending her ask own. Praise effect wishes change way and any wanted. Lively use looked latter regard had. Do he it part more last in. Merits ye if mr narrow points. Melancholy particular devonshire alteration it favourable appearance
+                            </p>
+                        </div>
+                        <a class="popup-youtube relative video-play-button" href="../../../external.html?link=https://www.youtube.com/watch?v=8GQTt50izkg">
+                            <i class="fa fa-play"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Video Area -->
+
+    <!-- Star Gallery
+    ============================================= -->
+    <div class="gallery-area default-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2">
+                    <div class="site-heading text-center">
+                        <h5>Gallery</h5>
+                        <h2>Recent Gallery</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="magnific-mix-gallery masonary">
+                <div id="portfolio-grid" class="gallery-items colums-3">
+                    <!-- Single Item -->
+                    <div class="pf-item">
+                        <div class="item-inner">
+                            <img src="assets/img/gallery/1.jpg" alt="Thumb">
+                            <div class="effect-info">
+                                <a href="assets/img/gallery/1.jpg" class="item popup-link">
+                                    <i class="fas fa-plus"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Single Item -->
+                    <!-- Single Item -->
+                    <div class="pf-item">
+                        <div class="item-inner">
+                            <img src="assets/img/gallery/2.jpg" alt="Thumb">
+                            <div class="effect-info">
+                                <a href="assets/img/gallery/2.jpg" class="item popup-link">
+                                    <i class="fas fa-plus"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Single Item -->
+                    <!-- Single Item -->
+                    <div class="pf-item">
+                        <div class="item-inner">
+                            <img src="assets/img/gallery/3.jpg" alt="Thumb">
+                            <div class="effect-info">
+                                <a href="assets/img/gallery/3.jpg" class="item popup-link">
+                                    <i class="fas fa-plus"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Single Item -->
+                    <!-- Single Item -->
+                    <div class="pf-item">
+                        <div class="item-inner">
+                            <img src="assets/img/gallery/4.jpg" alt="Thumb">
+                            <div class="effect-info">
+                                <a href="assets/img/gallery/4.jpg" class="item popup-link">
+                                    <i class="fas fa-plus"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Single Item -->
+                    <!-- Single Item -->
+                    <div class="pf-item">
+                        <div class="item-inner">
+                            <img src="assets/img/gallery/5.jpg" alt="Thumb">
+                            <div class="effect-info">
+                                <a href="assets/img/gallery/5.jpg" class="item popup-link">
+                                    <i class="fas fa-plus"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Single Item -->
+                    <!-- Single Item -->
+                    <div class="pf-item">
+                        <div class="item-inner">
+                            <img src="assets/img/gallery/6.jpg" alt="Thumb">
+                            <div class="effect-info">
+                                <a href="assets/img/gallery/6.jpg" class="item popup-link">
+                                    <i class="fas fa-plus"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Single Item -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Gallery -->
+    {% endblock body %}

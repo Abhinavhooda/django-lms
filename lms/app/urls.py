@@ -6,6 +6,9 @@ from app import views
 
 urlpatterns = [
     path('', views.home, name='home'),
+    path('app/contact', views.contact, name= 'contact'),
+    path('app/about', views.about, name='about'),
+    path('app/courses', views.courses, name='courses'),
 
 
 
