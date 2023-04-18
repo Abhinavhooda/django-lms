@@ -16,6 +16,10 @@ def about(request):
 
 def courses(request):
     return render(request, 'app/courses.html', {})
+
+def experts(request):
+    return render(request, 'app/experts.html', {})
+
     
     
     
