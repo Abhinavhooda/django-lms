@@ -20,8 +20,8 @@ def courses(request):
 def experts(request):
     return render(request, 'app/experts.html', {})
 
-    
-    
+def blog(request):
+    return render(request, 'app/blog.html', {})
     
 
 def handler404(request,*args,**argv):
