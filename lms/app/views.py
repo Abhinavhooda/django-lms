@@ -21,7 +21,8 @@ def about(request):
     return render(request, 'app/about.html', {})
 
 def courses(request):
-    return render(request, 'app/courses.html', {})
+    category = Categories.get_all_categories(Categories)
+    return render(request, 'app/courses.html', {category:'category'})
 
 def experts(request):
     return render(request, 'app/experts.html', {})
