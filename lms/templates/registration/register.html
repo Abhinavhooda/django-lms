@@ -1,79 +1,54 @@
 {% extends 'base/base.html' %} {% load static %} {% load cache %}
 {% block title %}{% endblock title %}
 {% block body %}
-    <!-- Start Register 
-    ============================================= -->
-    <div class="login-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4 offset-lg-4">
-                    <div class="login-box">
-                        <div class="login">
-                            <div class="content">
-                                <a href="index-2.html"><img src="/static/assets/img/logo.png" alt="Logo"></a>
-                                {% include 'base/msg.html' %}
-                                <form method="POST" action="{% url 'register' %}">
-                                    {% csrf_token %}
-                                    <div class="row">
-                                        <div class="col-lg-12 col-md-12">
-                                            <div class="form-group">
-                                                <i class="fas fa-user"></i> <input class="form-control" placeholder="username*" type="text" name = 'Username'>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-lg-12 col-md-12">
-                                            <div class="form-group">
-                                                <i class="fas fa-envelope-open"></i> <input class="form-control" placeholder="Email*" type="email" name="email">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-lg-12 col-md-12">
-                                            <div class="form-group">
-                                                <i class="fas fa-lock"></i> <input class="form-control" placeholder="Password*" type="text" name="Password">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12 col-md-12">
-                                        <div class="row">
-                                            <button type="submit">
-                                                Create - Account
-                                            </button>
-                                        </div>
-                                    </div>
-                                </form>
-                                <div class="sign-up">
-                                    <p>
-                                        Already have an account?? <a href="login.html">Login Now</a>
-                                    </p>
-                                </div>
-                                <div class="social-login">
-                                    <h5>Or Register With</h5>
-                                    <ul>
-                                        <li class="facebook">
-                                            <a href="#">
-                                                <i class="fab fa-facebook-f"></i>
-                                            </a>
-                                        </li>
-                                        <li class="twitter">
-                                            <a href="#">
-                                                <i class="fab fa-twitter"></i>
-                                            </a>
-                                        </li>
-                                        <li class="g-plus">
-                                            <a href="#">
-                                                <i class="fab fa-google-plus-g"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+    <!-- REGISTER
+    ================================================== -->
+    <div class="container mb-11">
+        <div class="row gx-0">
+            <div class="col-md-7 col-xl-4 mx-auto">
+                <!-- Register -->
+                <h3 class="mb-6">Sign Up and Start Learning!</h3>
+                {% include 'base/msg.html' %}
+                <!-- Form Register -->
+                <form class="mb-5" method = "POST" action = "{% url 'register' %}">
+                    {% csrf_token %}
+
+                    <!-- Username -->
+                    <div class="form-group mb-5">
+                        <label for="modalSignupUsername1">
+                            Username
+                        </label>
+                        <input type="text" class="form-control" id="modalSignupUsername1" placeholder="John" name="Username">
                     </div>
-                </div>
+
+                    <!-- Email -->
+                    <div class="form-group mb-5">
+                        <label for="modalSignupEmail1">
+                            Email
+                        </label>
+                        <input type="email" class="form-control" id="modalSignupEmail1" placeholder="johndoe@creativelayers.com" name = "email">
+                    </div>
+
+                    <!-- Password -->
+                    <div class="form-group mb-5">
+                        <label for="modalSignupPassword3">
+                            Password
+                        </label>
+                        <input type="password" class="form-control" id="modalSignupPassword3" placeholder="**********" name = "Password">
+                    </div>
+
+                    <!-- Submit -->
+                    <button class="btn btn-block btn-primary" type="submit">
+                        SIGN UP
+                    </button>
+
+                </form>
+
+                <!-- Text -->
+                <p class="mb-0 font-size-sm text-center">
+                    Already have an account? <a class="text-underline" href="login.html">Log In</a>
+                </p>
             </div>
         </div>
     </div>
-    <!-- End Register -->
 {% endblock body %}
