@@ -6,7 +6,7 @@ from app.models import *
 
 def base(request):
     base_category = Categories.objects.all()
-    return render(request, 'app/home.html', {base_category:'base_category'})
+    return render(request, 'base/base.html', {'base_category':base_category})
     
 
 def home(request):
@@ -20,9 +20,13 @@ def contact(request):
 def about(request):
     return render(request, 'app/about.html', {})
 
-def courses(request):
-    category = Categories.get_all_categories(Categories)
-    return render(request, 'app/courses.html', {category:'category'})
+class courses(View):
+    def get(self, request):
+        category = Categories.get_all_categories(Categories)
+        c_courses = Courses.objects.all().order_by('-id')
+        return render(request, 'app/courses.html', {'category':category,'c_courses':c_courses})
+
+    
 
 def experts(request):
     return render(request, 'app/experts.html', {})

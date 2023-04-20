@@ -25,23 +25,24 @@
         <div class="container">
             <div class="courses-box">
                 <div class="row">
+                    {% for cr in c_courses %}
                     <!-- Single item -->
                     <div class="single-item col-lg-4 col-md-6">
                         <div class="item">
                             <div class="thumb">
                                 <a href="course-details.html">
-                                    <img src="/static/assets/img/courses/4.jpg" alt="Thumb">
+                                    <img src="{{cr.featured_image.url}}" alt="Thumb">
                                 </a>
                                 <div class="price">
-                                    <h5>$15.00</h5>
+                                    <h5>{{ cr.price }}</h5>
                                 </div>
                             </div>
                             <div class="info">
                                 <h4>
-                                    <a href="course-details.html">Photography for Beginners Masterclass</a>
+                                    <a href="{{cr.slug}}">{{cr.title}}</a>
                                 </h4>
                                 <p>
-                                    Seeing rather her you not esteem men settle genius excuse. Deal say over you age from Comparison new. 
+                                    {{cr.description}} 
                                 </p>
                                 <div class="bottom-info">
                                     <div class="course-info">
@@ -61,6 +62,7 @@
                         </div>
                     </div>
                     <!-- End Single item -->
+                    {% endfor %}
                     <!-- Single item -->
                     <div class="single-item col-lg-4 col-md-6">
                         <div class="item">

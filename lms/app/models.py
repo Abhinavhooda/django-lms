@@ -2,6 +2,17 @@ from django.db import models
 from autoslug import *
 
 # Create your models here.
+class Institute(models.Model):
+    name = models.CharField(max_length=100, null=True)
+    address = models.CharField(max_length=500, null=False)
+    phone = models.BigIntegerField()
+    email = models.EmailField(max_length=254)
+    portal_name = models.CharField(max_length=100)
+    
+    def __str__(self):
+        return self.name
+    
+
 class Categories(models.Model):
     icon = models.CharField(max_length=200, null=True)
     name = models.CharField(max_length=200, default=None)
