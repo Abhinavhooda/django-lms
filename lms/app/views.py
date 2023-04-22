@@ -4,15 +4,11 @@ from .models import *
 from django.contrib import messages
 from app.models import * 
 
-def base(request):
-    base_category = Categories.objects.all()
-    return render(request, 'base/base.html', {'base_category':base_category})
-    
 
 def home(request):
     category = Categories.objects.all()
     home_course = Courses.objects.filter(status='PUBLISH').order_by('-id')
-    return render(request, 'app/home.html', {category:'category', home_course:'home_course'})
+    return render(request, 'app/home.html', {'category':category, 'home_course':home_course})
 
 def contact(request):
     return render(request, 'app/contact.html', {})
