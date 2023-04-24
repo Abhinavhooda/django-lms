@@ -22,7 +22,13 @@ class courses(View):
         c_courses = Courses.objects.all().order_by('-id')
         return render(request, 'app/courses.html', {'category':category,'c_courses':c_courses})
 
-    
+class coursedetail(View):
+    def get (self, request):
+        course = Courses.objects.get(course_slug=slug)
+        course_object = Courses.objects.get(course_slug=slug)
+        course_object.save()
+        return render(request, 'app/course-detail.html', {'course':course})
+        
 
 def experts(request):
     return render(request, 'app/experts.html', {})
