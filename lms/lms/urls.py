@@ -26,7 +26,8 @@ urlpatterns = [
     path('accounts/register', user_login.Register, name='register'),
     path('accounts/', include('django.contrib.auth.urls')),
     path('dologin/', user_login.Dologin, name='dologin'),
-    path('accounts/profile', user_login.Profile, name='profile')
+    path('accounts/profile', user_login.Profile, name='profile'),
+    path('accounts/profile/update', user_login.Profile_update, name='profile_update'),
 ]
 handler404= 'app.views.handler404'
 

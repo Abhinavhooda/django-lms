@@ -1,4 +1,6 @@
-{% extends 'base/base.html' %} {% load static %} {% block title %} LMS | Home{% endblock title %}
+{% extends 'base/base.html' %}
+ {% load static %} {% load cache %} 
+{% block title %} LMS | Home{% endblock title %}
 {% block body %}
     <!-- HERO
     ================================================== -->
@@ -430,7 +432,7 @@
                     <p class="font-size-lg mb-0 text-capitalize">Cum doctus civibus efficiantur in imperdiet deterruisset.</p>
                 </div>
                 <div class="col-md-auto">
-                    <a href="course-list-v3.html" class="d-flex align-items-center fw-medium">
+                    <a href="{% url 'courses' %}" class="d-flex align-items-center fw-medium">
                         Browse All
                         <div class="ms-2 d-flex">
                             <!-- Icon -->

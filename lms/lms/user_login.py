@@ -44,4 +44,26 @@ def Dologin(request):
 		   
 def Profile(request):
     return render(request, 'registration/profile.html', {})
+
+def Profile_update(request):
+    if request.method == "POST":
+        username = request.POST.get('username')
+        first_name = request.POST.get('first_name')
+        last_name = request.POST.get('last_name')
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+        user_id = request.user.id
+
+        user = User.objects.get(id=user_id)
+        user.first_name = first_name
+        user.last_name = last_name
+        user.username = username
+        user.email = email
+
+        if password != None and password != "":
+            user.set_password(password)
+        user.save()
+        messages.success(request,'Profile successfully updated. ')
+        return redirect('profile')
+    
     

@@ -23,9 +23,9 @@ class courses(View):
         return render(request, 'app/courses.html', {'category':category,'c_courses':c_courses})
 
 class coursedetail(View):
-    def get (self, request):
-        course = Courses.objects.get(course_slug=slug)
-        course_object = Courses.objects.get(course_slug=slug)
+    def get (self, request, slug):
+        course = Courses.objects.get(slug=slug)
+        course_object = Courses.objects.get(slug=slug)
         course_object.save()
         return render(request, 'app/course-detail.html', {'course':course})
         
