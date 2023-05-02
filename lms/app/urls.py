@@ -9,7 +9,7 @@ urlpatterns = [
     path('app/contact', views.contact, name= 'contact'),
     path('app/about', views.about, name='about'),
     path('app/courses', views.courses.as_view(), name='courses'),
-    path('coursedetail/<slug>', views.coursedetail.as_view(), name='coursedetail'),
+    path('course/<slug>', views.coursedetail.as_view(), name='coursedetail'),
     path('app/experts', views.experts, name='experts'),
     path('app/blog', views.blog, name='blog'),
     path('course/filter-data',views.filter_data,name="filter-data"),
@@ -21,5 +21,6 @@ urlpatterns = [
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 urlpatterns += [re_path(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT, }),
 ]
+handler404= 'app.views.handler404'
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

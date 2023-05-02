@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,get_object_or_404
 from django.views import View
 from .models import *
 from django.contrib import messages
@@ -57,7 +57,7 @@ def filter_data(request):
 class coursedetail(View):
     def get (self, request, slug):
         course = Courses.objects.get(slug=slug)
-        course_object = Courses.objects.get(slug=slug)
+        course_object = get_object_or_404(Courses, slug=slug)
         course_object.save()
         return render(request, 'app/course-detail.html', {'course':course})
         
