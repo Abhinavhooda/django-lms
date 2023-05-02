@@ -1,6 +1,34 @@
 {% extends 'base/base.html' %} {% load static %} {% load cache %}
 {% block title %} Courses | LMS {% endblock title %}
 {% block body %}
+    <script>
+    $(document).ready(function(){
+    
+        $(".filter-checkbox").on('click', function(){
+            var filter_object={};
+            $(".filter-checkbox").each(function(index,ele){
+                var filter_value=$(this).val();
+                var filter_key=$(this).data('filter');
+                console.log(filter_key,filter_value);
+                filter_object[filter_key]=Array.from(document.querySelectorAll('input[data-filter='+filter_key+']:checked')).map(function(el){
+                     return el.value;
+                });
+            });
+    
+            $.ajax({
+                url:'{% url 'filter-data' %}',
+                data:filter_object,
+                dataType:'json',
+                success:function(res){
+                    console.log(res)
+                    $("#filteredcourses").html(res.data);
+                    var filter_value=$(this).val();
+                    var filter_key=$(this).data('filter');
+                }
+            });
+        });
+    });
+    </script>
     <!-- COURSE LIST V2
     ================================================== -->
     <div class="container">
@@ -35,7 +63,7 @@
                             <ul class="list-unstyled list-group list-checkbox">
                                 {% for i in category %}
                                 <li class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="category-{{i.id}}">
+                                    <input type="checkbox" class="custom-control-input filter-checkbox" id="category-{{i.id}}" data-filter="category" value="{{i.id}}">
                                     <label class="custom-control-label font-size-base" for="category-{{i.id}}">{{i.name}} ({{i.courses_set.all.count}})</label>
                                 </li>
                                 {% endfor %}
@@ -124,8 +152,8 @@
             </div>
 
             <div class="col-xl-8">
-                <div class="row row-cols-md-2 mb-3 ">
-                    {% for i in courses %}
+                <div class="row row-cols-md-2 mb-3 " id="filteredcourses">
+                    {% for c in courses %}
                     <div class="col-md pb-4 pb-md-7">
                         <!-- Card -->
                         <div class="card border shadow p-2 lift sk-fade">
@@ -150,11 +178,10 @@
                                 </div>
 
                                 <a href="#" class="card-img sk-thumbnail d-block">
-                                    <img class="rounded shadow-light-lg" src="{{i.featured_image}}" alt="...">
+                                    <img class="rounded shadow-light-lg" src="{{c.featured_image}}" alt="...">
                                 </a>
 
                                 <span class="badge sk-fade-bottom badge-lg badge-orange badge-pill badge-float bottom-0 left-0 mb-4 ms-4">
-                                    <span class="text-white text-uppercase fw-bold font-size-xs">BEST SELLER</span>
                                 </span>
                             </div>
 
@@ -162,16 +189,16 @@
                             <div class="card-footer px-2 pb-2 mb-1 pt-4 position-relative">
                                 <a href="instructors-single.html" class="d-block">
                                     <div class="avatar sk-fade-right avatar-xl badge-float position-absolute top-0 right-0 mt-n6 me-5 rounded-circle shadow border border-white border-w-lg">
-                                        <img src="{{i.Author.author_profile}}" alt="..." class="avatar-img rounded-circle">
+                                        <img src="{{c.Author.author_profile}}" alt="..." class="avatar-img rounded-circle">
                                     </div>
                                 </a>
 
                                 <!-- Preheading -->
-                                <a href="course-single-v5.html"><span class="mb-1 d-inline-block text-gray-800">Photography</span></a>
+                                <a href="course-single-v5.html"><span class="mb-1 d-inline-block text-gray-800">{{c.category}}</span></a>
 
                                 <!-- Heading -->
                                 <div class="position-relative">
-                                    <a href="course-single-v5.html" class="d-block stretched-link"><h4 class="line-clamp-2 h-md-48 h-lg-58 me-md-6 me-lg-10 me-xl-4 mb-2">Fashion Photography From Professional</h4></a>
+                                    <a href="course-single-v5.html" class="d-block stretched-link"><h4 class="line-clamp-2 h-md-48 h-lg-58 me-md-6 me-lg-10 me-xl-4 mb-2">{{c.title}} </h4></a>
 
                                     <div class="d-lg-flex align-items-end flex-wrap mb-n1">
                                         <div class="star-rating mb-2 mb-lg-0 me-lg-3">
@@ -215,8 +242,7 @@
                                         </div>
 
                                         <div class="col-auto px-2 text-right">
-                                            <del class="font-size-sm">$959</del>
-                                            <ins class="h4 mb-0 d-block mb-lg-n1">$415.99</ins>
+                                            <ins class="h4 mb-0 d-block mb-lg-n1">₹{{c.price}}</ins>
                                         </div>
                                     </div>
                                 </div>
