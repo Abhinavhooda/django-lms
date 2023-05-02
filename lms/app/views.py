@@ -19,8 +19,9 @@ def about(request):
 class courses(View):
     def get(self, request):
         category = Categories.get_all_categories(Categories)
-        c_courses = Courses.objects.all().order_by('-id')
-        return render(request, 'app/courses.html', {'category':category,'c_courses':c_courses})
+        courses = Courses.objects.all().order_by('-id')
+        level = Level.objects.all()
+        return render(request, 'app/courses.html', {'category':category,'courses':courses, 'level':level})
 
 class coursedetail(View):
     def get (self, request, slug):

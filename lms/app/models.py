@@ -25,7 +25,6 @@ class Categories(models.Model):
     
 class Level(models.Model):
     name = models.CharField(max_length=50, default=None, null=True)
-    slug = AutoSlugField(populate_from='name', unique=True, default=None, blank=False, null=True)
     
     def __str__(self):
         return self.name
