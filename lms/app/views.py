@@ -1,4 +1,5 @@
 from django.shortcuts import render,redirect,get_object_or_404
+from django.http import Http404
 from django.views import View
 from .models import *
 from django.contrib import messages
@@ -57,10 +58,14 @@ def filter_data(request):
 class coursedetail(View):
     def get (self, request, slug):
         course = Courses.objects.get(slug=slug)
-        course_object = get_object_or_404(Courses, slug=slug)
-        course_object.save()
+        try:
+            course_object = get_object_or_404(Courses, slug=slug)
+            course_object.save()
+        except Http404:
+            return render(request, 'base/error.html')
         return render(request, 'app/course-detail.html', {'course':course})
         
+            
 
 def experts(request):
     return render(request, 'app/experts.html', {})
