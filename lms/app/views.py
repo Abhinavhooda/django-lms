@@ -84,7 +84,8 @@ def checkout(request, slug):
             course=course
         )
         usercourse.save()
-        return redirect('courses')
+        messages.success(request,'Courses successfully enrolled ! ')
+        return redirect('enrolled_courses')
     return render(request, 'payment/checkout.html', {})
     
 def enrolled_courses(request):

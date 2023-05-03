@@ -26,6 +26,7 @@
 <!-- CONTROL BAR
 ================================================== -->
 <div class="container mb-6 mb-xl-8 z-index-2">
+    {% include 'base/msg.html' %}
     <div class="d-xl-flex align-items-center">
         <p class="mb-xl-0">Courses that you have <span class="text-dark">Enrolled </span> are:</p>
         <div class="ms-xl-auto d-xl-flex flex-wrap">
@@ -124,7 +125,7 @@
                                     </li>
                                 </ul>
                             </div>
-                            {% if cr.price == 0 %}
+                            {% if cr.course.price == 0 %}
                             <div class="col-auto px-2 text-right">
                                 <ins class="h4 mb-0 d-block mb-lg-n1">Free</ins>
                             </div>
