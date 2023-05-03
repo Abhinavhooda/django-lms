@@ -13,7 +13,9 @@ urlpatterns = [
     path('app/experts', views.experts, name='experts'),
     path('app/blog', views.blog, name='blog'),
     path('course/filter-data',views.filter_data,name="filter-data"),
-    path('search', views.search, name='search')
+    path('search', views.search, name='search'),
+    path('checkout/<slug>', views.checkout, name='checkout'),
+    path('enrolled_courses', views.enrolled_courses, name='enrolled_courses'),
     
 
 

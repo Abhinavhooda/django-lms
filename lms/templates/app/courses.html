@@ -239,10 +239,15 @@
                                                 </li>
                                             </ul>
                                         </div>
-
+                                        {% if c.price == 0 %}
+                                        <div class="col-auto px-2 text-right">
+                                            <ins class="h4 mb-0 d-block mb-lg-n1">Free</ins>
+                                        </div>
+                                        {% else %}
                                         <div class="col-auto px-2 text-right">
                                             <ins class="h4 mb-0 d-block mb-lg-n1">₹{{c.price}}</ins>
                                         </div>
+                                        {% endif %}
                                     </div>
                                 </div>
                             </div>

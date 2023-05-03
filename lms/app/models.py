@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db import models
 from autoslug import *
 
@@ -44,7 +45,10 @@ class Courses(models.Model):
         ('PUBLISH','PUBLISH'),
         ('DRAFT','DRAFT'),
     )
-    
+    CERT_STATUS=(
+        ('Yes','yes'),
+        ('No','no'),
+    )
     featured_image = models.ImageField(upload_to="media/featured_img", null=True)
     featured_video = models.CharField(null=True, max_length=100)
     title = models.CharField(max_length=200)
@@ -58,6 +62,7 @@ class Courses(models.Model):
     language = models.CharField(null=True, default=None, max_length=200)
     slug = AutoSlugField(populate_from='title', unique=True, default=None, blank=False, null=True)
     status = models.CharField(choices= STATUS, max_length=100, null=True)
+    certificate = models.CharField(choices=CERT_STATUS, max_length=100, null=True)
     
     def __str__(self):
         return self.title
@@ -96,3 +101,11 @@ class video(models.Model):
     def __str__(self):
         return self.title
     
+class Usercourse(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    course = models.ForeignKey(Courses, on_delete=models.CASCADE)
+    paid = models.BooleanField(default=0)
+    date=models.DateTimeField(auto_now_add=True)
+    
+    def __str__(self):
+        return self.user.first_name +" - " +self.course.title

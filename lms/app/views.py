@@ -1,5 +1,4 @@
-from django.shortcuts import render,redirect,get_object_or_404
-from django.http import Http404
+from django.shortcuts import render,redirect
 from django.views import View
 from .models import *
 from django.contrib import messages
@@ -58,14 +57,16 @@ def filter_data(request):
 
 class coursedetail(View):
     def get (self, request, slug):
-        course = Courses.objects.get(slug=slug)
         time_duration = video.objects.filter().aggregate(sum=Sum('time_duration'))
+        course = Courses.objects.get(slug=slug)
+        course_id = Courses.objects.get(slug=slug)
         try:
-            course_object = get_object_or_404(Courses, slug=slug)
-            course_object.save()
-        except Http404:
-            return render(request, 'base/error.html')
-        return render(request, 'app/course-detail.html', {'course':course, 'time_duration':time_duration})
+            check_enroll=Usercourse.objects.get(user= request.user, course=course_id)
+        except Usercourse.DoesNotExist:
+            check_enroll=None
+        course_object = Courses.objects.get(slug=slug)
+        course_object.save()
+        return render(request, 'app/course-detail.html', {'course':course,'course_id':course_id, 'time_duration':time_duration, 'check_enroll': check_enroll})
         
             
 
@@ -74,6 +75,20 @@ def experts(request):
 
 def blog(request):
     return render(request, 'app/blog.html', {})
+
+def checkout(request, slug):
+    course=Courses.objects.get(slug=slug)
+    if course.price == 0 :
+        usercourse=Usercourse(
+            user = request.user,
+            course=course
+        )
+        usercourse.save()
+        return redirect('courses')
+    return render(request, 'payment/checkout.html', {})
+    
+def enrolled_courses(request):
+    return render(request, 'app/enrolled-courses.html', {})
     
 
 def handler404(request,*args,**argv):
