@@ -88,7 +88,8 @@ def checkout(request, slug):
     return render(request, 'payment/checkout.html', {})
     
 def enrolled_courses(request):
-    return render(request, 'app/enrolled-courses.html', {})
+    course = Usercourse.objects.filter(user = request.user)
+    return render(request, 'app/enrolled-courses.html', {'course':course})
     
 
 def handler404(request,*args,**argv):
