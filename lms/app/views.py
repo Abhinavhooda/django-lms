@@ -5,6 +5,7 @@ from .models import *
 from django.contrib import messages
 from app.models import * 
 from django.template.loader import render_to_string
+from django.db.models import Sum
 from django.http import JsonResponse
 
 
@@ -58,12 +59,13 @@ def filter_data(request):
 class coursedetail(View):
     def get (self, request, slug):
         course = Courses.objects.get(slug=slug)
+        time_duration = video.objects.filter().aggregate(sum=Sum('time_duration'))
         try:
             course_object = get_object_or_404(Courses, slug=slug)
             course_object.save()
         except Http404:
             return render(request, 'base/error.html')
-        return render(request, 'app/course-detail.html', {'course':course})
+        return render(request, 'app/course-detail.html', {'course':course, 'time_duration':time_duration})
         
             
 
