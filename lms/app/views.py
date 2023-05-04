@@ -87,7 +87,7 @@ def blog(request):
 @login_required
 def checkout(request, slug):
     category = Categories.get_all_categories(Categories) 
-    course=Courses.objects.get(slug=slug)
+    course=Courses.objects.get(slug=slug)    
     if course.discount == 100 :
         usercourse=Usercourse(
             user = request.user,

@@ -129,6 +129,8 @@ class Usercourse(models.Model):
     course = models.ForeignKey(Courses, on_delete=models.CASCADE)
     paid = models.BooleanField(default=0)
     date=models.DateTimeField(auto_now_add=True)
+    class Meta:
+        unique_together = ["user","course"]
     
     def __str__(self):
         return self.user.first_name +" - " +self.course.title
