@@ -180,10 +180,25 @@
                                         <div class="text-secondary d-flex">
                                             <i class="fa-brands fa-youtube" style="color:red"></i>
                                         </div>
-
-                                        <div class="ms-4">
-                                            {{video.title}}
-                                        </div>
+                                        {% if check_enroll is not None %}
+                                        <a class="data-fancybox" data-type="iframe" href="/course/watch/$={{course.slug}}" width="640" height="480" allow="autoplay"> <!-- $ is course -->
+                                            <div class="ms-4" data-toggle="tooltip" title="Click to watch !">
+                                                {{video.title}}
+                                            </div>
+                                        </a>    
+                                        {% else %}
+                                            {% if video.preview == True %}
+                                                <a class="data-fancybox" data-type="iframe" href="https://drive.google.com/file/d/{{video.video_link}}/preview" width="640" height="480" allow="autoplay">
+                                                    <div class="ms-4" data-toggle="tooltip" title="Click to watch !">
+                                                        {{video.title}}
+                                                    </div>
+                                                </a>
+                                            {% else %}
+                                                <div class="ms-4" data-toggle="tooltip" title="Enroll the course to view !">
+                                                    {{video.title}}
+                                                </div>
+                                            {% endif %}
+                                        {% endif %}
                                     </div>
 
                                     <div class="d-flex align-items-center overflow-auto overflow-md-visible flex-shrink-all">
@@ -495,7 +510,7 @@
                     </a>
 
                     <div class="pt-5 pb-4 px-5 px-lg-3 px-xl-5">
-                        {% if course.price == 0 %}
+                        {% if course.discount == 100 %}
                             <div class="d-flex align-items-center mb-2">
                             <ins class="h2 mb-0">Free</ins>
                             <div class="badge badge-lg badge-purple text-white ms-auto fw-normal">100% Off</div>
@@ -557,7 +572,7 @@
 
                                 </div>
                                 <h6 class="mb-0 ms-3 me-auto">Enrolled</h6>
-                                <span>1982 students</span>
+                                <span>{{course.usercourse_set.all.count}} students</span>
                             </li>
                             <li class="list-group-item d-flex align-items-center py-3" style="background-color:#F7F9FB">
                                 <div class="text-secondary d-flex icon-uxs">

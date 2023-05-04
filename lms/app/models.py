@@ -69,6 +69,10 @@ class Courses(models.Model):
     def __str__(self):
         return self.title
     
+    def get_absolute_url(self):
+        from django.urls import reverse
+        return reverse("coursedetail", kwargs={'slug': self.slug})
+    
 def create_slug(instance, new_slug=None):
     slug = slugify(instance.title)
     if new_slug is not None:
