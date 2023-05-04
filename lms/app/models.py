@@ -1,6 +1,8 @@
 from django.contrib.auth.models import User
 from django.db import models
 from autoslug import *
+from django.utils.text import slugify
+from django.db.models.signals import pre_save
 
 # Create your models here.
 class Institute(models.Model):
@@ -60,12 +62,29 @@ class Courses(models.Model):
     price = models.IntegerField(null=True, default=0)
     discount = models.IntegerField(null=True)
     language = models.CharField(null=True, default=None, max_length=200)
-    slug = AutoSlugField(populate_from='title', unique=True, default=None, blank=False, null=True)
+    slug = models.SlugField(default='', max_length=500, null=True, blank=True)
     status = models.CharField(choices= STATUS, max_length=100, null=True)
     certificate = models.CharField(choices=CERT_STATUS, max_length=100, null=True)
     
     def __str__(self):
         return self.title
+    
+def create_slug(instance, new_slug=None):
+    slug = slugify(instance.title)
+    if new_slug is not None:
+        slug=new_slug
+    qs=Courses.objects.filter(slug=slug).order_by('-id')
+    exists =qs.exists()
+    if exists:
+        new_slug = "%s-%S" % (slug, qs.first().id)
+        return create_slug(instance, new_slug=new_slug)
+    return slug
+
+def pre_save_post_reciever(sender, instance, *args, **kwargs):
+    if not instance.slug:
+        instance.slug= create_slug(instance)
+        
+pre_save.connect(pre_save_post_reciever, Courses)
     
 class learning_point(models.Model):
     course = models.ForeignKey(Courses, on_delete=models.CASCADE, default=None)
