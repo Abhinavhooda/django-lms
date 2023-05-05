@@ -2,9 +2,8 @@
 {% load static %} {% load cache %} {% load course_tags %}
 {% block title %} Courses | LMS {% endblock title %}
 {% block body %}
-    <script>
+<script>
     $(document).ready(function(){
-    
         $(".filter-checkbox").on('click', function(){
             var filter_object={};
             $(".filter-checkbox").each(function(index,ele){
@@ -15,7 +14,6 @@
                      return el.value;
                 });
             });
-    
             $.ajax({
                 url:'{% url 'filter-data' %}',
                 data:filter_object,

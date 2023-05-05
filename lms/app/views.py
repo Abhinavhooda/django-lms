@@ -41,21 +41,12 @@ def courses(request):
 
 def filter_data(request):
     category = request.GET.getlist('category[]')
-    level = request.GET.getlist('level[]')
-    price = request.GET.getlist('price[]')
-    if price == ['pricefree']:
-        course = Courses.objects.filter(price=0)
-    elif price == ['pricepaid']:
-        course = Courses.objects.filter(price__gte=1)
-    elif price == ['priceall']:
-        course = Courses.objects.all()
-    elif category:
-        course = Courses.objects.filter(category__id__in = category).order_by('-id')
-    elif level:
-        course = Courses.objects.filter(level__id__in = level).order_by('-id')
+    if category:
+        course = Courses.objects.filter(category__id__in=category).order_by('-id')
     else:
-       course = Courses.objects.all().order_by('-id')
-    t = render_to_string('ajax/course.html', {'course': course})
+        course = Courses.objects.all().order_by('-id')
+    print(category)
+    t = render_to_string('ajax/course.html',{'course':course}, request=request)
     return JsonResponse({'data': t})
 
 @login_required
