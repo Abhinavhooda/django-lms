@@ -1,5 +1,4 @@
 from django.shortcuts import render,redirect
-from django.views import View
 from django.contrib.auth.decorators import login_required
 from .models import *
 from django.contrib import messages
@@ -38,16 +37,6 @@ def courses(request):
         return render(request, 'app/courses.html', {'category':category,'courses':courses, 'level':level})
         # else:
             # return redirect('register')
-
-def filter_data(request):
-    category = request.GET.getlist('category[]')
-    if category:
-        course = Courses.objects.filter(category__id__in=category).order_by('-id')
-    else:
-        course = Courses.objects.all().order_by('-id')
-    print(category)
-    t = render_to_string('ajax/course.html',{'course':course}, request=request)
-    return JsonResponse({'data': t})
 
 @login_required
 def coursedetail(request, slug):

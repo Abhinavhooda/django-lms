@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include, re_path
 from django.conf import settings
-from .import user_login
+from . import user_login
 from django.conf.urls.i18n import i18n_patterns
 
 

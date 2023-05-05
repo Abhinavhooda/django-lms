@@ -16,8 +16,8 @@ urlpatterns = [
 #------------search
     path('search', views.search, name='search'),
 #------------Coursedetail, filter & watch
-    path('course/filter-data',views.filter_data,name='filter-data'),
     path('course/<slug:slug>', views.coursedetail, name='coursedetail'),
+    # path('course/filter-data',views.filter_data,name='filter-data'),
     path('course/watch/$=<slug:slug>', views.watchcourse, name='watchcourse'),
 #------------Checkout & Enroll
     path('checkout/<slug>', views.checkout, name='checkout'),
