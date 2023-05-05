@@ -118,7 +118,8 @@ class video(models.Model):
     lesson = models.ForeignKey(lessons, on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
     video_link = models.CharField(max_length=200)
-    time_duration = models.IntegerField(null=True)
+    description = models.TextField(null=True, default=None)
+    time_duration = models.FloatField()
     preview = models.BooleanField(default=False)
     
     def __str__(self):

@@ -106,13 +106,12 @@ def enrolled_courses(request):
  
 @login_required
 def watchcourse(request, slug):
-    lecture = request.GET.get('lecture')
-    videos = video.objects.get(id=lecture)
-    course_id = Courses.objects.get(slug=slug)
     course = Courses.objects.filter(slug=slug)
-
+    lecture = request.GET.get('lecture')
+    course_id = Courses.objects.get(slug=slug)
+   
     try:
-        check_enroll =Usercourse.objects.get(user=request.user, course=course_id)
+        check_enroll = Usercourse.objects.get(user=request.user, course=course_id)
         videos = video.objects.get(id=lecture)
         if course.exists():
             course = course.first()
@@ -120,7 +119,7 @@ def watchcourse(request, slug):
             return redirect('notfound')
     except Usercourse.DoesNotExist:
         return redirect('notfound')    
-    return render(request, 'app/course-watch.html',{'course':course,'videos':videos, 'check_enroll':check_enroll})
+    return render(request, 'app/course-watch.html',{'course':course,'videos':videos,'check_enroll':check_enroll, 'lecture':lecture})
 
 def notfound(request):
     category = Categories.get_all_categories(Categories)

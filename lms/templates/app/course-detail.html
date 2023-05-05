@@ -181,7 +181,7 @@
                                             <i class="fa-brands fa-youtube" style="color:red"></i>
                                         </div>
                                         {% if check_enroll is not None %}
-                                        <a class="data-fancybox" data-type="iframe" href="/course/watch/$={{course.slug}}" width="640" height="480" allow="autoplay"> <!-- $ is course -->
+                                        <a class="data-fancybox" data-type="iframe" href="/course/watch/$={{course.slug}}?lecture={{video.id}}" width="640" height="480" allow="autoplay"> <!-- $ is course -->
                                             <div class="ms-4" data-toggle="tooltip" title="Click to watch !">
                                                 {{video.title}}
                                             </div>
