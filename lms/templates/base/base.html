@@ -32,12 +32,20 @@
     <link rel="stylesheet" href="/static/assets/css/theme.min.css">
     <!-- Icons -->
     <script src="https://kit.fontawesome.com/639e2696fa.js" crossorigin="anonymous"></script>
-    <script>
-        $(function () {
-            $('[data-toggle="tooltip"]').tooltip()
-        })
+    <!-- Ajax-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    
+    <!-- tooltip error message -->
+        <script>
+            $(function () {
+                $('[data-toggle="tooltip"]').tooltip()
+            })
         </script>
+    <!-- tooltip error message ends -->
+
+    <!-- title -->
     <title>{% block title %}{% endblock title %}</title>
+    <!--title block end -->
 
 </head>
 <body>

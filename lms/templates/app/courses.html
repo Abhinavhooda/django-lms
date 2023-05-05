@@ -2,6 +2,34 @@
 {% load static %} {% load cache %} {% load course_tags %}
 {% block title %} Courses | LMS {% endblock title %}
 {% block body %}
+
+<script>
+    $(document).ready(function(){
+        $(".filter-checkbox").on('click', function(){
+            var filter_object={};
+            $(".filter-checkbox").each(function(index,ele){
+                var filter_value=$(this).val();
+                var filter_key=$(this).data('filter');
+                console.log(filter_key,filter_value);
+                filter_object[filter_key]=Array.from(document.querySelectorAll('input[data-filter='+filter_key+']:checked')).map(function(el){
+                     return el.value;
+                });
+            });
+            $.ajax({
+                url:'{% url 'filter-data' %}',
+                data:filter_object,
+                dataType:'json',
+                success:function(res){
+                    console.log(res)
+                    $("#filteredProducts").html(res.data);
+                    var filter_value=$(this).val();
+                    var filter_key=$(this).data('filter');
+                }
+            });
+        });
+    });
+</script>
+
     <!-- COURSE LIST V2
     ================================================== -->
     <div class="container">
@@ -119,13 +147,13 @@
                             </ul>
                         </div>
                     </div>
-                    <a href="#" class="btn btn-primary btn-block mb-10">FILTER RESULTS</a>
+                    <!--<a href="#" class="btn btn-primary btn-block mb-10">FILTER RESULTS</a>-->
                 </div>
 
             </div>
 
             <div class="col-xl-8">
-                <div class="row row-cols-md-2 mb-3 " id="filteredcourses">
+                <div class="row row-cols-md-2 mb-3 " id="filteredProducts">
                     {% for c in courses %}
                     <div class="col-md pb-4 pb-md-7">
                         <!-- Card -->
@@ -194,7 +222,7 @@
                                                             </svg>
 
                                                         </div>
-                                                        <div class="font-size-sm">5 lessons</div>
+                                                        <div class="font-size-sm">{{c.video_set.all.count}} lessons</div>
                                                     </div>
                                                 </li>
                                                 <li class="nav-item px-3">

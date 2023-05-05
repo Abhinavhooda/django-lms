@@ -23,6 +23,7 @@ from django.conf.urls.i18n import i18n_patterns
 urlpatterns = [
     path('panel/', admin.site.urls),
     path('',include('app.urls')),
+    path('',include('instructors.urls')),
     path('accounts/register', user_login.Register, name='register'),
     path('accounts/', include('django.contrib.auth.urls')),
     path('dologin/', user_login.Dologin, name='dologin'),

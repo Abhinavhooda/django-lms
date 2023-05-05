@@ -1,4 +1,4 @@
-from django.urls import path,re_path, include
+from django.urls import path,re_path
 from django.conf.urls.static import static
 from django.conf import settings
 from django.views.static import serve
@@ -17,7 +17,7 @@ urlpatterns = [
     path('search', views.search, name='search'),
 #------------Coursedetail, filter & watch
     path('course/<slug:slug>', views.coursedetail, name='coursedetail'),
-    # path('course/filter-data',views.filter_data,name='filter-data'),
+    path('product/filter-data',views.filter_data,name="filter-data"),
     path('course/watch/$=<slug:slug>', views.watchcourse, name='watchcourse'),
 #------------Checkout & Enroll
     path('checkout/<slug>', views.checkout, name='checkout'),

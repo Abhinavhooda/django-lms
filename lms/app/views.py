@@ -37,6 +37,21 @@ def courses(request):
         return render(request, 'app/courses.html', {'category':category,'courses':courses, 'level':level})
         # else:
             # return redirect('register')
+            
+def filter_data(request):
+    categories = request.GET.getlist('category[]')
+    levels = request.GET.getlist('level[]')
+    price = request.GET.getlist('price[]')
+    print(price)
+    if categories:
+        course = Courses.objects.filter(category__id__in = categories).order_by('-id')
+        
+    elif levels:
+        course = Courses.objects.filter(level__id__in = levels).order_by('-id')
+    else:
+        course = Courses.objects.all().order_by('id')
+    t = render_to_string('app/ajaxcourse.html',{'course':course})
+    return JsonResponse({'data':t})
 
 @login_required
 def coursedetail(request, slug):
