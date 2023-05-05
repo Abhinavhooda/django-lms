@@ -12,8 +12,7 @@ from django.http import JsonResponse
 def home(request):
     category = Categories.get_all_categories(Categories)
     home_course = Courses.objects.filter(status='PUBLISH').order_by('-id')
-    time_duration = video.objects.filter().aggregate(sum=Sum('time_duration'))
-    return render(request, 'app/home.html', {'category':category, 'home_course':home_course, 'time_duration':time_duration})
+    return render(request, 'app/home.html', {'category':category, 'home_course':home_course})
 
 def search(request):
     query = request.GET['query']
@@ -61,7 +60,7 @@ def filter_data(request):
 
 @login_required
 def coursedetail(request, slug):
-        time_duration = video.objects.filter().aggregate(sum=Sum('time_duration'))
+        time_duration = video.objects.filter(course__slug=slug).aggregate(sum=Sum('time_duration'))
         category = Categories.get_all_categories(Categories)
         course = Courses.objects.filter(slug=slug)
         if course.exists():
