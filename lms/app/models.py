@@ -162,7 +162,7 @@ class Partners(models.Model):
 class News_Notices(models.Model):
     title = models.CharField(max_length=500)
     description = models.TextField(null=True)
-    documents = models.FileField(upload_to='media/News_Notices/documents')
+    documents = models.FileField(upload_to='media/News_Notices/documents', blank=True)
     
     def __str__(self):
         return self.title
@@ -170,7 +170,7 @@ class News_Notices(models.Model):
 class Upcoming_Events(models.Model):
     title = models.CharField(max_length=500)
     description = models.TextField(null=False)
-    image = models.ImageField(upload_to='media/events/upcoming')
+    image = models.ImageField(upload_to='media/events/upcoming',blank=True)
     def __str__(self):
         return self.title
         

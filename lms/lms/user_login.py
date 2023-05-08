@@ -3,8 +3,10 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from app.EmailBackEnd import *
+from app.models import *
 
 def Register(request):
+    institute = Institute.objects.filter(status='Active')
     if request.method=="POST":
         username = request.POST.get('Username')
         email = request.POST.get("email")
@@ -13,12 +15,12 @@ def Register(request):
  # check email
         if User.objects.filter(email=email).exists():
            messages.warning(request,'Email are Already Exists !')
-           return redirect('register')
+           return redirect('register',{'institute':institute})
 
  # check username
         if User.objects.filter(username=username).exists():
            messages.warning(request,'Username are Already exists !')
-           return redirect('register')
+           return redirect('register',{'institute':institute})
         
         user = User(
             username=username,
@@ -28,9 +30,10 @@ def Register(request):
         user.save()
         return redirect('login')
 
-    return render(request, 'registration/register.html', {})
+    return render(request, 'registration/register.html', {'institute':institute})
     
 def Dologin(request):
+    institute = Institute.objects.filter(status='Active')
     if request.method=="POST":
         email = request.POST.get("email")
         password = request.POST.get("Password")
@@ -40,10 +43,11 @@ def Dologin(request):
            return redirect('home')
         else:
            messages.error(request,'Email and Password Are Invalid !')
-           return redirect('login')
+           return redirect('login',{'institute':institute})
 		   
 def Profile(request):
-    return render(request, 'registration/profile.html', {})
+    institute = Institute.objects.filter(status='Active')
+    return render(request, 'registration/profile.html', {'institute':institute})
 
 def Profile_update(request):
     if request.method == "POST":
