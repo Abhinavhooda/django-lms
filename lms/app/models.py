@@ -5,11 +5,18 @@ from django.db.models.signals import pre_save
 
 # Create your models here.
 class Institute(models.Model):
+    STATUS=(
+        ('Active','Active'),
+        ('Draft','Draft'),
+    )
     name = models.CharField(max_length=100, null=True)
+    logo = models.ImageField(upload_to='media/institute/logos', default=None, blank=True)
     address = models.CharField(max_length=500, null=False)
     phone = models.BigIntegerField()
     email = models.EmailField(max_length=254)
     portal_name = models.CharField(max_length=100)
+    sub_text = models.CharField(max_length=200, default=None)
+    status = models.CharField(choices= STATUS, max_length=100, null=True)
     
     def __str__(self):
         return self.name
@@ -134,3 +141,36 @@ class Usercourse(models.Model):
     
     def __str__(self):
         return self.user.first_name +" - " +self.course.title
+    
+    
+class Testimonials(models.Model):
+    name = models.CharField(max_length=200)
+    testi_photo = models.ImageField(upload_to='media/testimonials', default=None)
+    description = models.TextField(null=True, default=None)
+    designation = models.CharField(max_length=200)
+    
+    def __str__(self):
+        return self.name
+
+class Partners(models.Model):
+    name = models.CharField(max_length=200)
+    logo = models.ImageField(upload_to='media/partners')
+    
+    def __str__(self):
+        return self.name
+
+class News_Notices(models.Model):
+    title = models.CharField(max_length=500)
+    description = models.TextField(null=True)
+    documents = models.FileField(upload_to='media/News_Notices/documents')
+    
+    def __str__(self):
+        return self.title
+
+class Upcoming_Events(models.Model):
+    title = models.CharField(max_length=500)
+    description = models.TextField(null=False)
+    image = models.ImageField(upload_to='media/events/upcoming')
+    def __str__(self):
+        return self.title
+        

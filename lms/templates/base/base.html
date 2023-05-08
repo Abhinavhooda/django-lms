@@ -219,9 +219,11 @@
         <div class="container-fluid">
 
             <!-- Brand -->
+            {% for ins in institute %}
             <a class="navbar-brand me-0" href="/">
-                <img src="/static/assets/img/brand.svg" class="navbar-brand-img" alt="...">
+                <img src="/media/{{ins.logo}}" class="navbar-brand-img" alt="...">
             </a>
+            {% endfor %}
 
             <!-- Vertical Menu -->
             <ul class="navbar-nav navbar-vertical ms-xl-4 d-none d-xl-flex">
@@ -429,20 +431,24 @@
                 <div class="col-12 col-md-4 col-lg-4">
 
                     <!-- Brand -->
-                    <img src="/static/assets/img/brand.svg" alt="..." class="footer-brand img-fluid mb-4 h-60p">
+                    {% for ins in institute %}
+                    <a href="/">
+                    <img src="/media/{{ins.logo}}"  alt="..." class="footer-brand img-fluid mb-4 h-60p">
+                    </a>
 
                     <!-- Text -->
                     <p class="text-gray-800 mb-4 font-size-sm-alone">
-                        329 Queensberry Street, North Melbourne VIC 3051, Australia.
+                        {{ins.address}}
                     </p>
 
                     <div class="mb-4">
-                        <a href="tel:1234567890" class="text-gray-800 font-size-sm-alone">123 456 7890</a>
+                        <a href="tel:{{ins.phone}}" class="text-gray-800 font-size-sm-alone">+91 {{ins.phone}}</a>
                     </div>
 
                     <div class="mb-4">
-                        <a href="mailto:support@skola.com" class="text-gray-800 font-size-sm-alone">support@skola.com</a>
+                        <a href="mailto:{{ins.email}}" class="text-gray-800 font-size-sm-alone">{{ins.email}}</a>
                     </div>
+                    {% endfor %}
 
                     <!-- Social -->
                     <ul class="list-unstyled list-inline list-social mb-4 mb-md-0">
