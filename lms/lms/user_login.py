@@ -15,12 +15,12 @@ def Register(request):
  # check email
         if User.objects.filter(email=email).exists():
            messages.warning(request,'Email are Already Exists !')
-           return redirect('register',{'institute':institute})
+           return redirect('register')
 
  # check username
         if User.objects.filter(username=username).exists():
            messages.warning(request,'Username are Already exists !')
-           return redirect('register',{'institute':institute})
+           return redirect('register')
         
         user = User(
             username=username,
@@ -29,11 +29,9 @@ def Register(request):
         user.set_password(Password)
         user.save()
         return redirect('login')
-
-    return render(request, 'registration/register.html', {'institute':institute})
+    return render(request, 'registration/register.html',{'institute':institute})
     
 def Dologin(request):
-    institute = Institute.objects.filter(status='Active')
     if request.method=="POST":
         email = request.POST.get("email")
         password = request.POST.get("Password")
@@ -43,7 +41,7 @@ def Dologin(request):
            return redirect('home')
         else:
            messages.error(request,'Email and Password Are Invalid !')
-           return redirect('login',{'institute':institute})
+           return redirect('login')
 		   
 def Profile(request):
     institute = Institute.objects.filter(status='Active')
