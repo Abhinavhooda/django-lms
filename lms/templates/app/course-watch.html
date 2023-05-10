@@ -42,8 +42,9 @@
     <div class="px-5 px-lg-8 w-100">
         <div class="d-md-flex align-items-center"> 
             <!-- Brand -->
-            <a class="navbar-brand mb-2 mb-md-0" href="/"> <img src="/static/assets/img/brand.svg" class="navbar-brand-img" alt="logo"></a>
-
+            {% for ins in institute %}
+            <a class="navbar-brand mb-2 mb-md-0" href="/"> <img src="/media/{{ins.logo}}" class="navbar-brand-img" alt="logo"></a>
+            {% endfor %}
             <!-- Lesson Title -->
             <div class="ms-md-6 ms-wd-12 ms-xl-10 me-auto mb-5 mb-md-0">
             <h3 class="mb-0 line-clamp-2 ms-wd-3"> {{course.category.name}} : {{course.title}}</h3>
