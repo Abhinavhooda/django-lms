@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django_extensions',
     'app',
     'instructors',
+    'dbbackup',
 ]
 
 MIDDLEWARE = [
@@ -145,3 +146,6 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = config('host_email')
 EMAIL_HOST_PASSWORD = config('host_password')
+
+DBBACKUP_STORAGE = 'django.core.files.storage.FileSystemStorage'
+DBBACKUP_STORAGE_OPTIONS = {'location': os.path.join(BASE_DIR,'backup')}
